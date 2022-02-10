@@ -1,6 +1,7 @@
 package space.taran.arknavigator.mvp.model.repo.index
 
 import java.nio.file.Path
+import space.taran.arklib.ArkLib
 
 typealias ResourceId = Long
 
@@ -8,8 +9,6 @@ typealias ResourceId = Long
 // Calculating CRC-32 hash of a file takes about the
 // same time as reading the file from internal storage.
 
-private external fun computeIdNative(size: Long, file: String): Long
-
 fun computeId(size: Long, file: Path): ResourceId {
-    return computeIdNative(size, file.toString())
+    return ArkLib.computeId(size, file)
 }
